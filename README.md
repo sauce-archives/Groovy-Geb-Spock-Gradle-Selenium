@@ -1,12 +1,47 @@
-# Saucelabs Geb Spock Groovy Gradle Stack Example
+## JS-Nightwatch.js
 
-This is meant to be an example of Saucelabs Geb Spock Groovy Gradle Stack for QA testing.
+This code is provided on an "AS-IS” basis without warranty of any kind, either express or implied, including without limitation any implied warranties of condition, uninterrupted use, merchantability, fitness for a particular purpose, or non-infringement. Your tests and testing environments may require you to modify this framework. Issues regarding this framework should be submitted through GitHub. For questions regarding Sauce Labs integration, please see the Sauce Labs documentation at https://wiki.saucelabs.com/. This framework is not maintained by Sauce Labs Support.
 
-Make sure you have set the following environment variables:
+### Environment Setup
 
-    SAUCE_USERNAME
-    SAUCE_ACCESS_KEY
+1. Global Dependencies
+    * Install [Gradle](https://gradle.org/)
+    * Or Install Node.js with [Homebrew](http://brew.sh/)
+    ```
+    $ brew install gradle
+    ```
+2. Sauce Credentials
+    * In the terminal export your Sauce Labs Credentials as environmental variables:
+    ```
+    $ export SAUCE_USERNAME=<your Sauce Labs username>
+	$ export SAUCE_ACCESS_KEY=<your Sauce Labs access key>
+    ```
 
-Simply run the below command for SauceLabs:
+### Running Tests
 
-    ./gradle sauceTest
+* Tests in Parallel:
+	```
+	$ ./gradle sauceTest
+	```
+
+[Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
+
+### Advice/Troubleshooting
+
+1. There may be additional latency when using a remote webdriver to run tests on Sauce Labs. Timeouts or Waits may need to be increased.
+    * [Selenium tips regarding explicit waits](https://wiki.saucelabs.com/display/DOCS/Best+Practice%3A+Use+Explicit+Waits)
+
+### Resources
+##### [Sauce Labs Documentation](https://wiki.saucelabs.com/)
+
+##### [SeleniumHQ Documentation](http://www.seleniumhq.org/docs/)
+
+##### [Geb Documentation](http://www.gebish.org/manual/current/)
+
+##### [Spock Documentation](http://spockframework.org/spock/docs/1.1-rc-2/index.html)
+
+##### [Stack Overflow](http://stackoverflow.com/)
+* A great resource to search for issues not explicitly covered by documentation
+
+##### [Original repo](https://github.com/JohnRoach/Saucelabs-Geb-Spock-Groovy-Gradle)
+* Thank you John Roach for your contributions (:

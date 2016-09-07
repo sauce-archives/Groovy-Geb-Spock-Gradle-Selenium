@@ -29,7 +29,7 @@ ext {
 
 def sauce = [
             username: "$System.env.SAUCE_USERNAME",
-            key     : "$System.env.SAUCE_KEY"
+            key     : "$System.env.SAUCE_ACCESS_KEY"
     ]
 
 dependencies {

@@ -1,0 +1,77 @@
+import org.gradle.internal.os.OperatingSystem
+
+group 'info.johnroach'
+version '1.0-SNAPSHOT'
+
+apply plugin: "groovy"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    drivers = ["chrome", "firefox", "sauce"]
+    ext {
+        groovyVersion = '2.4.7'
+        gebVersion = '0.13.1'
+        seleniumVersion = '2.53.1'
+        ciSauceVersion = '1.116'
+        sauceJavaCommonVersion = '2.1.21'
+        sauceJunitVersion = '2.1.21'
+        saucerestVersion = '1.0.33'
+        sauceOndemandDriverVersion = '1.2'
+        seleniumClientFactoryVersion = '1.2'
+        seleniumRemoteDriver = '2.53.1'
+        junitVersion = '4.12'
+        slf4jVersion = '1.7.13'
+    }
+}
+
+def sauce = [
+            username: "$System.env.SAUCE_USERNAME",
+            key     : "$System.env.SAUCE_KEY"
+    ]
+
+dependencies {
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
+        exclude group: "org.codehaus.groovy"
+    }
+    testCompile "org.gebish:geb-gradle:$gebVersion"
+
+    testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
+
+    testCompile "com.saucelabs.selenium:sauce-ondemand-driver:$sauceOndemandDriverVersion"
+    testCompile "com.saucelabs.selenium:selenium-client-factory:$seleniumClientFactoryVersion"
+    testCompile "com.saucelabs:ci-sauce:$ciSauceVersion"
+    testCompile "com.saucelabs:sauce_java_common:$sauceJavaCommonVersion"
+    testCompile "com.saucelabs:sauce_junit:$sauceJunitVersion"
+    testCompile "com.saucelabs:saucerest:$saucerestVersion"
+
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumRemoteDriver"
+}
+
+drivers.each { driver ->
+    task "${driver}Test"(type: Test) {
+
+        if ("${driver}" == "sauce") {
+            // Run in parallel depending on how good your machine is
+            maxParallelForks Math.max(2, Runtime.runtime.availableProcessors().intdiv(2))
+        }
+
+        reports {
+            html.destination = reporting.file("$name/tests")
+            junitXml.destination = file("$buildDir/test-results/$name")
+        }
+
+        outputs.upToDateWhen { false }  // Always run tests
+
+        systemProperty "sauce.username", sauce.username
+        systemProperty "sauce.key", sauce.key
+        systemProperty "testDriver", "${driver}"
+        systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
+    }
+}

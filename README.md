@@ -1,16 +1,11 @@
+
 ## Groovy-Geb-Spock-Gradle-Selenium
 
 This code is provided on an "AS-IS” basis without warranty of any kind, either express or implied, including without limitation any implied warranties of condition, uninterrupted use, merchantability, fitness for a particular purpose, or non-infringement. Your tests and testing environments may require you to modify this framework. Issues regarding this framework should be submitted through GitHub. For questions regarding Sauce Labs integration, please see the Sauce Labs documentation at https://wiki.saucelabs.com/. This framework is not maintained by Sauce Labs Support.
 
 ### Environment Setup
 
-1. Global Dependencies
-    * Install [Gradle](https://gradle.org/)
-    * Or Install Node.js with [Homebrew](http://brew.sh/)
-    ```
-    $ brew install gradle
-    ```
-2. Sauce Credentials
+1. Sauce Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
     ```
     $ export SAUCE_USERNAME=<your Sauce Labs username>
@@ -21,7 +16,7 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 
 * Tests in Parallel:
 	```
-	$ ./gradle sauceTest
+	$ ./gradlew sauceTest
 	```
 
 [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
@@ -44,4 +39,5 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 * A great resource to search for issues not explicitly covered by documentation
 
 ##### [Original repo](https://github.com/JohnRoach/Saucelabs-Geb-Spock-Groovy-Gradle)
-* Thank you John Roach for your contributions (:
+* Thank you [John Roach](https://johnroach.info/
+) for your contributions (:

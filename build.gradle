@@ -1,6 +1,6 @@
 import org.gradle.internal.os.OperatingSystem
 
-group 'info.johnroach'
+group 'io.johnroach'
 version '1.0-SNAPSHOT'
 
 apply plugin: "groovy"

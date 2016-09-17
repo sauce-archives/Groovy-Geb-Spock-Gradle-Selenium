@@ -39,5 +39,5 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 * A great resource to search for issues not explicitly covered by documentation
 
 ##### [Original repo](https://github.com/JohnRoach/Saucelabs-Geb-Spock-Groovy-Gradle)
-* Thank you [John Roach](https://johnroach.info/
+* Thank you [John Roach](https://johnroach.io/
 ) for your contributions (:

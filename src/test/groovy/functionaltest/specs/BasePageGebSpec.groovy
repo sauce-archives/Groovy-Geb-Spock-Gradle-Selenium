@@ -77,7 +77,7 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
     public void setup() throws Exception {
         if (!driverCreated || !isSpecStepwise()) {
             Map<String, String> capMap
-            
+
             // This will be changed to have multiple options later on
             String capabilityString = '{"browserName": "Firefox", "platform": "Windows 10", "version": "42"}'
 
@@ -92,8 +92,8 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
                 capabilities.setCapability("name", String.format("%s.%s", specName, methodName))
                 capabilities.setCapability("newCommandTimeout", 180)
                 driver = new RemoteWebDriver(
-                        new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() +
-                                "@ondemand.saucelabs.com:80/wd/hub"), capabilities)
+                        new URL("https://" + authentication.getUsername() + ":" + authentication.getAccessKey() +
+                                "@ondemand.saucelabs.com:443/wd/hub"), capabilities)
 
                 this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString()
             } else {

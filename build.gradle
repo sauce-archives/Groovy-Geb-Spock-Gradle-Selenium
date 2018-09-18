@@ -21,7 +21,7 @@ ext {
         saucerestVersion = '1.0.33'
         sauceOndemandDriverVersion = '1.2'
         seleniumClientFactoryVersion = '1.2'
-        seleniumRemoteDriver = '2.53.1'
+        seleniumRemoteDriver = '3.4.0'
         junitVersion = '4.12'
         slf4jVersion = '1.7.13'
     }

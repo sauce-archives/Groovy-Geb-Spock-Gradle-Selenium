@@ -77,18 +77,13 @@ class CustomSauceOnDemandTestWatcher extends TestWatcher {
         if(this.watchedLog!=null && !this.watchedLog.equals("")) {
             pass = false
         }
+        System.out.println(pass)
         return pass
     }
 
     public void updateTestStatus() {
         Map<String, Object> updates = new HashMap<>()
-        if (areTestsSuccessful()) {
-            updates.put("passed")
-        }
-        else {
-            updates.("failed")
-        }
-        //updates.put("passed", areTestsSuccessful())
+        updates.put("passed", areTestsSuccessful())
         Utils.addBuildNumberToUpdate(updates)
         this.sauceREST.updateJobInfo(this.sessionIdProvider.getSessionId(), updates)
     }

@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxProfile
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
+import org.openqa.selenium.JavascriptExecutor
 import spock.lang.Stepwise
 
 
@@ -43,6 +44,10 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
      * Instance variable which contains the Sauce Job Id.
      */
     private String sessionId
+    /**
+     * Instance of sauce REST API client
+     */
+//    private final SauceREST sauceREST = new SauceREST(username, accessKey)
 
     private static boolean driverCreated
 
@@ -108,6 +113,8 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
     public void cleanup() throws Exception {
         if(!isSpecStepwise()){
             CachingDriverFactory.clearCache()
+            executor = driver as JavascriptExecutor
+            executor.executeScript("sauce:context='WHOOOAAAAA BUDDDY'")
             driver.quit()
         }
     }

@@ -77,7 +77,6 @@ class CustomSauceOnDemandTestWatcher extends TestWatcher {
         if(this.watchedLog!=null && !this.watchedLog.equals("")) {
             pass = false
         }
-        System.out.println(pass)
         return pass
     }
 

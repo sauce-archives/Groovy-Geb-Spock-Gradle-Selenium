@@ -12,8 +12,8 @@ repositories {
 ext {
     drivers = ["chrome", "firefox", "sauce"]
     ext {
-        groovyVersion = '2.4.7'
-        gebVersion = '0.13.1'
+        groovyVersion = '2.5.2'
+        gebVersion = '2.2'
         seleniumVersion = '2.53.1'
         ciSauceVersion = '1.116'
         sauceJavaCommonVersion = '2.1.21'
@@ -34,7 +34,7 @@ def sauce = [
 
 dependencies {
     testCompile "org.gebish:geb-spock:$gebVersion"
-    testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
+    testCompile("org.spockframework:spock-core:1.2-groovy-2.4") {
         exclude group: "org.codehaus.groovy"
     }
     testCompile "org.gebish:geb-gradle:$gebVersion"

@@ -45,31 +45,11 @@ class CustomSauceOnDemandTestWatcher extends TestWatcher {
      * The new version of spock v.1.1 is supposed to fix this soon
      */
     protected void failed(Throwable e, Description description) {
-        this.watchedLog+= description.getMethodName()
-        if (sessionIdProvider!=null && sessionIdProvider.getSessionId()!=null) {
-            printSessionId(description)
-            updateTestStatus()
-            if (verboseMode) {
-                // get, and print to StdOut, the link to the job
-                String authLink = sauceREST.getPublicJobLink(sessionIdProvider.getSessionId())
-                System.out.println("Job link: " + authLink)
-            }
-        } else {
-            if (verboseMode) {
-                System.out.println("Test Failed")
-            }
-        }
+        return
     }
 
     protected void succeeded(Description description) {
-        if (sessionIdProvider.getSessionId()!=null) {
-            System.out.println("Test succeeded: " + description.getMethodName())
-            updateTestStatus()
-        } else {
-            if (verboseMode) {
-                System.out.println("Test Succeeded")
-            }
-        }
+        return
     }
 
     public boolean areTestsSuccessful() {

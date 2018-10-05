@@ -12,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxProfile
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
-import org.openqa.selenium.JavascriptExecutor
 import spock.lang.Stepwise
 
 
@@ -44,10 +43,6 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
      * Instance variable which contains the Sauce Job Id.
      */
     private String sessionId
-    /**
-     * Instance of sauce REST API client
-     */
-    //private final SauceREST sauceREST = new SauceREST(username, accessKey)
 
     private static boolean driverCreated
 
@@ -80,7 +75,6 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
     }
 
     public void setup() throws Exception {
-
         if (!driverCreated || !isSpecStepwise()) {
             Map<String, String> capMap
 
@@ -113,7 +107,6 @@ class BasePageGebSpec extends GebSpec implements SauceOnDemandSessionIdProvider 
     @Override
     public void cleanup() throws Exception {
         if(!isSpecStepwise()){
-            System.out.println(">>>>>" + this.getSpecificationContext().name)
             CachingDriverFactory.clearCache()
             driver.quit()
         }

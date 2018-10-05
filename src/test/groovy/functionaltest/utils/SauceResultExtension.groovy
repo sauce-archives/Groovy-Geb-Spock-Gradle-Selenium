@@ -3,10 +3,11 @@ package functionaltest.utils
 import com.saucelabs.common.SauceOnDemandSessionIdProvider
 import com.saucelabs.saucerest.SauceREST
 import org.spockframework.runtime.model.SpecInfo
+import org.spockframework.runtime.AbstractRunListener
+import org.spockframework.runtime.extension.AbstractGlobalExtension
 
 import org.spockframework.runtime.model.ErrorInfo
-//import org.spockframework.runtime.model.FeatureInfo
-//import org.spockframework.runtime.model.IterationInfo
+
 
 class OnFailureListener extends AbstractRunListener {
 
@@ -33,13 +34,14 @@ class OnFailureListener extends AbstractRunListener {
 }
 
 
-class SauceResultExtension implements IGlobalExtension {
+class SauceResultExtension extends AbstractGlobalExtension {
 
-    protected final String username = System.getenv("SAUCE_USERNAMDE")
+    protected final String username = System.getenv("SAUCE_USERNAME")
     protected final String accesskey = System.getenv("SAUCE_ACCESS_KEY")
+    protected final SauceOnDemandSessionIdProvider sessionId
 
     @Override
     void visitSpec(SpecInfo specInfo) {
-        specInfo.addListener(new OnFailureListener(username, accesskey))
+        specInfo.addListener(new OnFailureListener(sessionId, username, accesskey))
     }
 }

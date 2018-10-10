@@ -25,7 +25,7 @@ This code is provided on an "AS-IS” basis without warranty of any kind, either
 
 1. There may be additional latency when using a remote webdriver to run tests on Sauce Labs. Timeouts or Waits may need to be increased.
     * [Selenium tips regarding explicit waits](https://wiki.saucelabs.com/display/DOCS/Best+Practice%3A+Use+Explicit+Waits)
-2. There is currently a bug in this framework that prevents [pass/fail results from being captured programmatically](https://github.com/spockframework/spock/issues/118). This applies to capturing pass/fail results onto Sauce Labs. Currently there is planned fix for this issue within this framework.
+2. There is currently a bug in this framework that prevents [pass/fail results from being captured programmatically](https://github.com/spockframework/spock/issues/118). This applies to capturing pass/fail results onto Sauce Labs. There is no planned fix for this issue within this framework.
 
 ### Resources
 ##### [Sauce Labs Documentation](https://wiki.saucelabs.com/)
